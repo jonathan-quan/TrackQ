@@ -1,0 +1,227 @@
+@import "tailwindcss";
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* DESIGN.md tokens — Figma-inspired monochrome system. */
+:root {
+  --color-ink: #000000;
+  --color-paper: #ffffff;
+  --color-glass-dark: rgba(0, 0, 0, 0.06);
+  --color-glass-dark-hover: rgba(0, 0, 0, 0.10);
+  --color-hairline: rgba(0, 0, 0, 0.12);
+  --color-muted: rgba(0, 0, 0, 0.55);
+
+  /* Status remains the single allowed accent set ("product content"). */
+  --color-hit: #00875a;
+  --color-miss: #d92d20;
+  --color-live: #d4a017;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+html {
+  font-family: 'InterVariable', 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, sans-serif;
+  font-feature-settings: "kern" 1, "ss01" 1, "cv11" 1;
+  letter-spacing: -0.014em;
+  color: var(--color-ink);
+  background: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-weight: 400;
+  font-variation-settings: "wght" 400;
+}
+
+/* Variable-weight stops mirroring DESIGN.md's figmaSans (320–540, 700). */
+.fw-light { font-variation-settings: "wght" 320; font-weight: 320; }
+.fw-light-2 { font-variation-settings: "wght" 340; font-weight: 340; }
+.fw-regular { font-variation-settings: "wght" 400; font-weight: 400; }
+.fw-mid { font-variation-settings: "wght" 450; font-weight: 450; }
+.fw-mid-2 { font-variation-settings: "wght" 480; font-weight: 480; }
+.fw-semi { font-variation-settings: "wght" 540; font-weight: 540; }
+.fw-bold { font-variation-settings: "wght" 700; font-weight: 700; }
+
+/* Display tracking — DESIGN.md mandates negative letter-spacing throughout. */
+.tracking-display { letter-spacing: -0.02em; }
+.tracking-hero { letter-spacing: -0.026em; }
+
+/* Mono uppercase signpost labels (figmaMono substitute). */
+.label-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+/* Signature dashed focus outline — references Figma editor selection handles. */
+*:focus-visible {
+  outline: 2px dashed var(--color-ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.55rem 1.15rem 0.6rem;
+  font-size: 0.95rem;
+  font-variation-settings: "wght" 480;
+  font-weight: 480;
+  letter-spacing: -0.014em;
+  line-height: 1;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-black {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.btn-black:hover:not(:disabled) { background: #1a1a1a; }
+
+.btn-white {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+.btn-white:hover:not(:disabled) { background: rgba(0, 0, 0, 0.04); }
+
+.btn-glass {
+  background: var(--color-glass-dark);
+  color: var(--color-ink);
+  border-color: transparent;
+}
+.btn-glass:hover:not(:disabled) { background: var(--color-glass-dark-hover); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: transparent;
+}
+.btn-ghost:hover:not(:disabled) { background: rgba(0, 0, 0, 0.04); }
+
+/* Circular icon button (50% radius per DESIGN.md). */
+.btn-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-glass-dark);
+  color: var(--color-ink);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.btn-icon:hover { background: var(--color-glass-dark-hover); }
+
+/* ---------- Inputs ---------- */
+.input {
+  width: 100%;
+  padding: 0.7rem 0.95rem;
+  background: var(--color-paper);
+  border: 1px solid var(--color-hairline);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-variation-settings: "wght" 400;
+  letter-spacing: -0.014em;
+  color: var(--color-ink);
+  transition: border-color 0.15s ease;
+}
+.input:hover { border-color: rgba(0, 0, 0, 0.28); }
+.input:focus { border-color: var(--color-ink); }
+
+.input::placeholder { color: rgba(0, 0, 0, 0.35); }
+
+/* ---------- Surfaces ---------- */
+.surface {
+  background: var(--color-paper);
+  border: 1px solid var(--color-hairline);
+  border-radius: 8px;
+}
+
+.surface-flat {
+  background: var(--color-paper);
+  border-radius: 8px;
+}
+
+/* ---------- Status badges (the only allowed color set) ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  line-height: 1;
+}
+
+.badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: currentColor;
+}
+
+.badge-hit {
+  color: var(--color-hit);
+  background: rgba(0, 135, 90, 0.08);
+  border-color: rgba(0, 135, 90, 0.2);
+}
+.badge-miss {
+  color: var(--color-miss);
+  background: rgba(217, 45, 32, 0.08);
+  border-color: rgba(217, 45, 32, 0.2);
+}
+.badge-live {
+  color: var(--color-live);
+  background: rgba(212, 160, 23, 0.10);
+  border-color: rgba(212, 160, 23, 0.25);
+}
+.badge-pending {
+  color: var(--color-muted);
+  background: rgba(0, 0, 0, 0.04);
+  border-color: var(--color-hairline);
+}
+
+/* ---------- Hero gradient (DESIGN.md vibrant signature) ---------- */
+.hero-gradient {
+  background:
+    radial-gradient(120% 100% at 0% 0%, #b6f47b 0%, transparent 55%),
+    radial-gradient(120% 100% at 100% 0%, #ffd84a 0%, transparent 55%),
+    radial-gradient(120% 100% at 100% 100%, #ff7ad9 0%, transparent 55%),
+    radial-gradient(120% 100% at 0% 100%, #8b5cf6 0%, transparent 55%),
+    #ffffff;
+}
+
+/* Smooth scrollbar in modals/lists */
+.scroll-area::-webkit-scrollbar { width: 8px; height: 8px; }
+.scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 9999px;
+}
+.scroll-area::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.35); }

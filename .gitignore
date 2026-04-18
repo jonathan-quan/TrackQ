@@ -1,25 +1,50 @@
-# Python
+# ---------- Python (backend) ----------
 __pycache__/
 *.py[cod]
+*$py.class
 *.egg-info/
-venv/
+.eggs/
+build/
+dist/
 .venv/
+venv/
+env/
+.python-version
 
-# Env / secrets
-.env
-
-# SQLite
-*.db
-*.sqlite
-*.sqlite3
-
-# Node
+# ---------- Node / Vite (frontend) ----------
 node_modules/
 dist/
-.vite/
+dist-ssr/
+*.local
 
-# IDE / OS
-.vscode/
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---------- Secrets / env ----------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---------- Editor / OS ----------
+.vscode/*
+!.vscode/extensions.json
 .idea/
 .DS_Store
 Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ---------- Local agent / scratch dirs ----------
+.claude/
+.demo/
+.cursor/

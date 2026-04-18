@@ -127,7 +127,7 @@ parlay-tracker/
 ### Stage 9 — Parlay Detail
 1. Show all legs for a parlay
 2. Each leg shows player, stat, line, actual value, hit/miss/pending
-3. Call `/parlays/{id}/refresh` on page open and on a 30s interval while mounted
+3. Call `/parlays/{id}/refresh` on page open, on a 60s interval while mounted, and on manual refresh-button click
 
 ### Stage 10 — Add Parlay Flow
 1. Button to create a new parlay with a name and date

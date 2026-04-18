@@ -35,9 +35,9 @@
 
 ## Live Stat Polling
 - Refresh is on-demand via `POST /parlays/{id}/refresh`
-- A per-parlay background task runs only while that parlay's game is currently live
+- A per-parlay background task polls every **60 seconds** while that parlay's game is currently live
 - Only poll legs where `game_date` equals today
-- Skip legs for games not started or already finished
+- Skip legs for games not started or already finished (task idles until tip-off, exits when final)
 - This avoids hammering nba.com and getting rate limited
 
 ## Status Codes

@@ -17,7 +17,7 @@ CREATE DATABASE IF NOT EXISTS trackq_db
 --    Replace 'CHANGE_ME_STRONG_PASSWORD' with a real password, then paste the
 --    same password into backend/.env under DATABASE_URL.
 CREATE USER IF NOT EXISTS 'trackq_user'@'localhost'
-    IDENTIFIED BY 'CHANGE_ME_STRONG_PASSWORD';
+    IDENTIFIED BY 'anhquan0708';
 
 -- 3. Permissions — scoped to trackq_db only
 GRANT ALL PRIVILEGES ON trackq_db.* TO 'trackq_user'@'localhost';

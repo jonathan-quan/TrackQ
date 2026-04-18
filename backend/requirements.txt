@@ -3,11 +3,11 @@ uvicorn[standard]
 sqlalchemy
 pymysql
 cryptography
-pydantic
+pydantic[email]
 pydantic-settings
 python-jose[cryptography]
 passlib[bcrypt]
-bcrypt
+bcrypt<4.1
 nba_api
 python-dotenv
 python-multipart
