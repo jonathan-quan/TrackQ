@@ -44,11 +44,15 @@ parlay-tracker/
 │   ├── crud.py              # DB operations
 │   ├── auth.py              # JWT + bcrypt helpers
 │   ├── database.py          # SQLAlchemy engine + session
+│   ├── scheduler.py         # per-parlay live-game polling tasks
 │   ├── requirements.txt
 │   ├── .env.example         # template for SECRET_KEY
 │   ├── .env                 # SECRET_KEY — never commit this
-│   └── services/
-│       └── nba_service.py   # nba_api calls
+│   ├── services/
+│   │   └── nba_service.py   # nba_api calls
+│   ├── sql/
+│   │   └── init.sql         # one-time DB + user setup
+│   └── tests/               # pytest smoke tests
 └── frontend/
     └── src/
         ├── pages/
@@ -240,6 +244,13 @@ uvicorn main:app --reload  # runs on http://localhost:8000
 cd frontend
 npm install
 npm run dev                # runs on http://localhost:5173
+```
+
+### Tests
+```bash
+cd backend
+pip install pytest
+pytest tests/
 ```
 
 ---
