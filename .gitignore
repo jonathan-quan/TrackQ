@@ -48,3 +48,11 @@ Thumbs.db
 .claude/
 .demo/
 .cursor/
+
+# ---------- Terraform ----------
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+*.auto.tfvars
+!*.tfvars.example

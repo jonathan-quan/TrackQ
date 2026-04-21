@@ -1,4 +1,5 @@
 import asyncio
+import os
 from concurrent.futures import ThreadPoolExecutor
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
@@ -49,9 +50,18 @@ def _attach_matchups(parlay: "models.Parlay") -> None:
 
 app = FastAPI(title="TrackQ")
 
+
+def _get_allowed_origins() -> list[str]:
+    raw = os.getenv("CORS_ALLOW_ORIGINS", "")
+    configured = [origin.strip() for origin in raw.split(",") if origin.strip()]
+    if configured:
+        return configured
+    return ["http://localhost:5173", "http://localhost:3000"]
+
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=_get_allowed_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -67,6 +77,11 @@ async def _start_background_tasks():
 @app.get("/")
 def root():
     return {"status": "ok", "app": "TrackQ"}
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 
 # ---------- Auth ----------
