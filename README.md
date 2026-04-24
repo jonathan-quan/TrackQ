@@ -1,4 +1,4 @@
-# Parlay Tracker
+# NBA Tracker
 
 A personal NBA parlay tracking dashboard. Add your player prop bets and the app automatically checks real stats to mark each leg as hit or miss.
 
