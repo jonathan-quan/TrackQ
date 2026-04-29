@@ -47,7 +47,7 @@ Update terraform.tfvars:
 
 aws_region     = "us-east-1"
 app_name       = "my-backend"
-container_port = 5000
+container_port = 8000
 image_url      = "<ecr-image-url>"
 3. Deploy Infrastructure
 terraform init

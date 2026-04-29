@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "task_execution_secrets" {
 }
 
 locals {
-  name          = lower(regexreplace(var.app_name, "[^a-zA-Z0-9-]", "-"))
+  name          = lower(replace(var.app_name, "/[^a-zA-Z0-9-]/", "-"))
   resource_name = substr(local.name, 0, 20)
   azs           = slice(data.aws_availability_zones.available.names, 0, 2)
 
@@ -210,8 +210,8 @@ resource "aws_security_group" "db" {
 }
 
 resource "aws_ecr_repository" "backend" {
-  name                 = local.name
-  image_tag_mutability = "MUTABLE"
+  name                 = "anhquan/trackq"
+  image_tag_mutability = "IMMUTABLE"
   force_delete         = true
 
   image_scanning_configuration {
